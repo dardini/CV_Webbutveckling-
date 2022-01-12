@@ -1,0 +1,64 @@
+﻿@{
+    //Titeln för sidan. 
+    ViewData["Title"] = "Erfarenhet";
+
+    //Här sätter vi lite yrken, arbetsplatser, städer och årtal. Samt lite variabler för att kunna hantera collapse show och hide för boostrap JS.
+    //Testa att lägga till fler yrken, städer etc på varje Array så ökar antalet element med resp. innehåll på hemsidan. 
+
+
+
+    string[] jobTitles = { "Servicetekniker", "Mekaniker", "Operatör"};
+    string[] workPlaces = {"Yamaha Ltd","Scania AB", "Volvo Cars AB" };
+    string[] cities = { "Kalmar", "Gävle", "Stockholm" };
+    string[] workYears = {  "2015-02 - 2021-12", "2014-03 - 2015-01", "2011-01 - 2014-03" };
+
+    string[] collapseTargets = { "flush-collapseOne", "flush-collapseTwo", "flush-collapseThree" };
+
+    //Nedan loopar vi igenom med en for loop. Varför? Jo för det blir väldigt enkelt att lägga till flera yrken. 
+}
+
+<div class="container m-4">    
+    <h1>@ViewData["Title"]</h1>
+    
+</div>
+
+<hr />
+
+@for (var i = 0; i < workPlaces.Length; i++)
+{
+    <div class="accordion accordion-flush border" id="accordionFlushExample">
+  <div class="accordion-item">
+    <h5 class="accordion-header" id="flush-headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#@collapseTargets[i]" aria-expanded="true" aria-controls="@collapseTargets[i]">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    @workYears[i]
+                </div>
+                <div class="col-4">
+                    @jobTitles[i]
+                </div>
+                <div class="col-3">
+                    @workPlaces[i]
+                </div>
+                <div class="col">
+                    @cities[i]
+                </div>            
+             </div>
+        </div>       
+      </button>
+    </h5>
+    <div id="@collapseTargets[i]" class="accordion-collapse   collapse " aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+          <div class="accordion-body">                                  
+            <h6>Beskrivning av roll</h6>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br />
+            Dolorem natus, ipsum recusandae obcaecati, reprehenderit laudantium officia facere nostrum, iste impedit rerum hic sapiente! <br />
+            Rerum quisquam obcaecati delectus repellat, quis ipsam.          
+            </div>
+      </div>
+    </div>
+  </div> 
+</div>
+}
+
